@@ -65,6 +65,15 @@ module "blog_alb" {
     bucket = "my-alb-logs"
   }
 
+  target_groups = [
+    {
+      name_prefix      = "blog-"
+      backend_protocol = "HTTP"
+      backend_port     = 80
+      target_type      = "instance"
+    }
+  ]
+
   http_tcp_listeners = [
     {
       port               = 80
